@@ -1,4 +1,4 @@
-his is a *FILE TO HELP* CONFIGURE CLUSTER NODES AND MASTER
+This is a *FILE TO HELP* CONFIGURE CLUSTER NODES AND MASTER
 
 link references:
 # Montando um cluster
