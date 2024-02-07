@@ -54,6 +54,7 @@ USER@main_desktop ????? não entendi onde usa
 ```
 
 ```
+#	network 192.168..0		->> Network address from router
 sudo nano /etc/network/interfaces
 ```
 
@@ -64,7 +65,7 @@ Set static ip inside the editable file **example**:
 #	address 192.168.1.XXX		->> set the ip of the machine (It is recommended to use sequences like 100, 110, 120
 #	netmask 255.255.255.0
 #	network 192.168.1.0		->> Network address from router
-#	broadcast 192.168.1.255
+#	broadcast 192.168.0.255
 ```
 ### ctrl+o >> ctrl+x     *to save the text in nano and exit the file*
 
