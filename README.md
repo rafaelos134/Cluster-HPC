@@ -54,7 +54,6 @@ USER@main_desktop ????? não entendi onde usa
 ```
 
 ```
-#	network 192.168..0		->> Network address from router
 sudo nano /etc/network/interfaces
 ```
 
