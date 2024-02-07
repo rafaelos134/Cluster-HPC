@@ -77,13 +77,13 @@ sudo apt install net-tools
 Install network interface controller
 
 ```
-sudo apt-get install ifupdown
+sudo apt install ifupdown
 ```
 
 To start the network
 
 ```
-sudo ifup enp0s8
+sudo ifup wlp2s0
 ```
 
 Test the newly configured network interface, remember to check if everything is properly configured
