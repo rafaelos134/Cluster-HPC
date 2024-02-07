@@ -1,5 +1,5 @@
 This is a *FILE TO HELP* CONFIGURE CLUSTER NODES AND MASTER
-
+___________________________________________________________________________
 link references:
 # Montando um cluster
 https://www.youtube.com/watch?v=zAL4TDa5EFI
