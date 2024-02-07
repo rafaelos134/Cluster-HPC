@@ -47,7 +47,7 @@ Check interface of a individual computer and do this for every computer that wil
 ifconfig
 ```
 
-It will appear the network interface data, for example `enp0s8`. Example on how to configure the main desktop:
+It will appear the network interface data, for example `enp0s8` or `wlp2s0`. Example on how to configure the main desktop:
 
 ```
 USER@main_desktop
