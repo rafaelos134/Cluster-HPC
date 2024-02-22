@@ -79,7 +79,9 @@ Install network interface controller
 ```
 sudo apt install ifupdown
 ```
-
+```
+sudo service NetworkManager restart
+```
 To start the network
 
 ```
