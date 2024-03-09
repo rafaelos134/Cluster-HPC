@@ -70,10 +70,22 @@ sudo nano /etc/network/interfaces
 Set static ip inside the editable file **example**:
 
 ```
-#	auto enp0s8iface enp0s8 inet static   ->> set static IP
-#	address 192.168.1.XXX		->> set the ip of the machine (It is recommended to use sequences like 100, 110, 120
+auto enp2s0
+ iface enp2s0 inet static ->> set static IP
+ address 192.168.1.XXX		->> set the ip of the machine (It is recommended to use  sequences like 100, 110, 120
+ netmask 255.255.255.0
+ network 192.168.1.0 ->> Network address from router
+ broadcast 192.168.1.255
+
+
+
+
+
+
+#	auto enp0s8iface enp0s8 inet static   
+#	address 192.168.1.
 #	netmask 255.255.255.0
-#	network 192.168.1.0		->> Network address from router
+#	network 192.168.1.0		
 #	broadcast 192.168.0.255
 ```
 ### ctrl+o >> ctrl+x     *to save the text in nano and exit the file*
