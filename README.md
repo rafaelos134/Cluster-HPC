@@ -58,10 +58,6 @@ ifconfig
 It will appear the network interface data, for example `enp0s8` or `wlp2s0`. Example on how to configure the main desktop:
 
 ```
-USER@main_desktop ????? não entendi onde usa
-```
-
-```
 sudo nano /etc/network/interfaces
 ```
 
