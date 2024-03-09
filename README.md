@@ -77,7 +77,7 @@ auto enp2s0
  
  ```
 sudo apt install net-tools
-```
+```USER@main_desktop 
 
 Install network interface controller
 
@@ -122,7 +122,6 @@ In the opened file, we can edit the machine names, for example:
 Test if it works, if it works, should ping, example:
 
 ```
-USER@main_desktop 
 ping node_name_1
 ```
 __________________________________________________________________
