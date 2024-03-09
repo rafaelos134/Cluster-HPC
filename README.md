@@ -51,6 +51,15 @@ cssh pi@192.168.0.2 pi@192.168.0.3 pi@192.168.0.4
 
 #  Configure Network
 
+
+
+
+
+#	auto enp0s8iface enp0s8 inet static   
+#	address 192.168.1.
+#	netmask 255.255.255.0
+#	network 192.168.1.0		
+#	broadcast 192.168.0.255
 Check interface of a individual computer and do this for every computer that will compose the cluster.
 
 ```
@@ -76,17 +85,6 @@ auto enp2s0
  netmask 255.255.255.0
  network 192.168.1.0 ->> Network address from router
  broadcast 192.168.1.255
-
-
-
-
-
-
-#	auto enp0s8iface enp0s8 inet static   
-#	address 192.168.1.
-#	netmask 255.255.255.0
-#	network 192.168.1.0		
-#	broadcast 192.168.0.255
 ```
 ### ctrl+o >> ctrl+x     *to save the text in nano and exit the file*
 
