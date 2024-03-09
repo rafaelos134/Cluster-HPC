@@ -1,6 +1,9 @@
 This is a *FILE TO HELP* CONFIGURE CLUSTER NODES AND MASTER
 ___________________________________________________________________________
 link references:
+# Crie seu próprio Cluster de Alto Desempenho! (Raspberrie)
+https://linuxuniverse.com.br/linux/cluster-hpc
+
 # Montando um cluster
 https://www.youtube.com/watch?v=zAL4TDa5EFI
 
@@ -36,7 +39,14 @@ sudo systemctl enable ssh
 ```
 sudo systemctl status ssh
 ```
+For control all nodes in one computer is possible user the cluster ssh
+```
+sudo apt install clusterssh
+```
 
+```
+cssh pi@192.168.0.2 pi@192.168.0.3 pi@192.168.0.4
+```
 ------------------------------------------------------------------------
 
 #  Configure Network
