@@ -113,7 +113,7 @@ If properly configured, it will ping the selected machine in the network. Now we
 sudo nano /etc/hosts
 ```
 
-In the opened file, we can edit the machine names, for example:
+In the opened file, we can edit the machine names, for example (you can use a generic name):
 
 ```
 # 192.168.1.XXX main_desktop
