@@ -40,6 +40,7 @@ sudo systemctl enable ssh
 sudo systemctl status ssh
 ```
 For control all nodes in one computer is possible user the cluster ssh
+
 ```
 sudo apt install clusterssh
 ```
@@ -77,13 +78,14 @@ auto enp2s0
  
  ```
 sudo apt install net-tools
-```USER@main_desktop 
+```
 
 Install network interface controller
 
 ```
 sudo apt install ifupdown
 ```
+
 ```
 sudo service NetworkManager restart
 ```
