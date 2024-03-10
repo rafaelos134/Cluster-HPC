@@ -104,7 +104,7 @@ ifconfig
 test other machines using ping
 
 ```
-ping 192.168.1.xxx
+ping 192.168.1.xxxssh-keygen
 ```
 
 If properly configured, it will ping the selected machine in the network. Now we need to configure: (**`DO THIS IN EVERY MACHINE`**)
@@ -126,4 +126,6 @@ Test if it works, if it works, should ping, example:
 ```
 ping node_name_1
 ```
-__________________________________________________________________
+___________________________________________________________________________
+# Second step
+Generating the encrypted key
