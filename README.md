@@ -20,6 +20,8 @@ https://www.youtube.com/watch?v=F6sOwVTqZkM
 ___________________________________________________________________________
 # First step
 
+obs: for facilitin, make the same name of user,"USER@..." the same in (**`ALL MACHINES`**), If you have a lot of machines, you can use the **cssh** to help
+
  Do this in every node and also for the main desktop 
 
 ```
@@ -128,4 +130,145 @@ ping node_name_1
 ```
 ___________________________________________________________________________
 # Second step
-Generating the encrypted key
+Generating the encrypted key, in main machine
+
+```
+ssh-keygen
+```
+
+Press enter for everything, the key will be in the folder (/home/USER/.ssh/id_rsa). Now, we need to copy the key into every node
+
+```
+ssh-copy-id -i ~/.ssh/id_rsa.pub USER@node_name
+```
+insert password from node and its done.
+
+# Check in every node if creation was successful
+
+Go to the folde and see, if the file was created
+
+```
+cd .ssh
+```
+```
+cd ls
+```
+After ls command should appear "authorized_keys"
+
+In main machine test the ssh to nodes, if the USER name isn't the same for all machine, you need write the USER name
+
+```
+ssh USER@node_name
+```
+
+To exit a node from the main desktop:
+```
+ssh exit
+```
+# Parallel computing
+
+instal openmpi (**`DO THIS IN EVERY MACHINE`**)
+
+```
+sudo apt-get install libopenmpi-dev
+```
+In the main machine, install the kernel server (this app allows to create shared folders)
+
+```
+sudo apt-get install nfs-kernel-server nfs-common portmap
+```
+now in the main machine, create the shared folder in the /home
+
+```
+mkdir clusterdir
+```
+now configure folder sharing, go to:
+
+```
+sudo nano /etc/exports
+```
+
+and type
+
+```
+/home/USER/clusterdir 192.168.1.X/24(rw,no_subtree_check,async,no_root_squash)
+```
+
+/home/USER/clusterdir will be shared the directory across the entire Network, if you want to share with a especific machine, you can use:
+```
+/home/USER/clusterdir no(rw,no_subtree_check,async,no_root_squash)
+```
+now, reboot shared network
+
+```
+sudo /etc/init.d/nfs-kernel-server restart
+```
+verific if works
+
+```
+sudo systemctl status nfs-kernel-server
+```
+Do this in every node OBS: 192.168.1.XXX is the ip from the main desktop
+
+```
+sudo apt-get install nfs-common portmap
+```
+```
+showmount -e 192.168.1.XXX
+```
+the output is "clnt_create: RPC: Unable to receive", and go to USER directory and create a folder clusterdir
+
+```
+pwd
+```
+```
+mkdir clusterdir
+```
+permanently mount nodes inside server from every node
+
+```
+sudo mount -t nfs 192.168.1.XXX:/home/USER/clusterdir /home/USER/clusterdir 
+```
+
+# After mount, update line to always connect
+USER@node_name
+sudo nano /etc/fstab
+
+# it will open shared network file, update the file. 
+192.168.1.XXX:home/USER/clusterdir /home/USER/clusterdir nfs rw,sync,hard,int 0 0
+
+#ctrl+o -> ctrl+x to save and exit
+
+------------ Do this inside main desktop ---------------
+# create a file to test 
+USER@main_desktop
+nano test.txt
+aeaiejiaj
+
+#ctrl+o -> ctrl+x to save and exit
+# then, go to nodes to see if it works
+USER@node_name 
+cd clusterdir
+
+USER@node_name
+ls
+# it should show test.txt file that is inside the main desktop
+
+---------------- CONFIGURE OPENMPI -------------------------------
+# do this in the main desktop
+USER@main_desktop
+pwd
+
+USER@main_desktop
+sudo nano .mpi_hostfile
+
+# it will open a file to edit, "x" is the total number of CPU units of main desktop
+# "y" and "z" are the CPU units of each node available in the network
+## OBS: Be careful, if a processor have 2 cores and 4 threads, it's recommended to use only
+## the two physical cores, i.e., 2. Do not input 4 taking account the threads, it can
+## make the cluster slower. USE ONLY THE COUNT OF PHYSICAL CORES
+local slots=x 
+
+node_name_1=y
+node_name_2=z
+
