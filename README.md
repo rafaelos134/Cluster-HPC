@@ -18,7 +18,7 @@ https://www.youtube.com/watch?v=F6sOwVTqZkM
 
 
 ___________________________________________________________________________
-# First step
+# First step - static ip 
 
 obs: for facilitin, make the same name of user,"USER@..." the same in (**`ALL MACHINES`**), If you have a lot of machines, you can use the **cssh** to help
 
