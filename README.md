@@ -230,45 +230,111 @@ permanently mount nodes inside server from every node
 sudo mount -t nfs 192.168.1.XXX:/home/USER/clusterdir /home/USER/clusterdir 
 ```
 
-# After mount, update line to always connect
-USER@node_name
+After mount, update line to always connect
+```
 sudo nano /etc/fstab
+```
+it will open shared network file, update the file. 
+```
+192.168.1.XXX:/home/USER/clusterdir /home/USER/clusterdir nfs rw,sync,hard,int 0 0
+```
 
-# it will open shared network file, update the file. 
-192.168.1.XXX:home/USER/clusterdir /home/USER/clusterdir nfs rw,sync,hard,int 0 0
+# check if the synchronization is working
 
-#ctrl+o -> ctrl+x to save and exit
-
------------- Do this inside main desktop ---------------
-# create a file to test 
-USER@main_desktop
+in the main machine create a file to test 
+```
 nano test.txt
-aeaiejiaj
-
-#ctrl+o -> ctrl+x to save and exit
-# then, go to nodes to see if it works
-USER@node_name 
+```
+then, go to nodes to see if it woAuthorization required, but no authorization protocol specified
+rks
+```
 cd clusterdir
+```
 
-USER@node_name
+```
 ls
-# it should show test.txt file that is inside the main desktop
+```
+it should show test.txt file that is inside the main desktop
 
----------------- CONFIGURE OPENMPI -------------------------------
-# do this in the main desktop
-USER@main_desktop
+# CONFIGURE OPENMPI
+
+in the main machine
+```
+sudo apt-get install build-essential
+```
+
+```
 pwd
+```
 
-USER@main_desktop
+in the cluster file
+```
 sudo nano .mpi_hostfile
+```
 
-# it will open a file to edit, "x" is the total number of CPU units of main desktop
-# "y" and "z" are the CPU units of each node available in the network
-## OBS: Be careful, if a processor have 2 cores and 4 threads, it's recommended to use only
-## the two physical cores, i.e., 2. Do not input 4 taking account the threads, it can
-## make the cluster slower. USE ONLY THE COUNT OF PHYSICAL CORES
-local slots=x 
+edit the file use 
+```
+localhost slots=x 
 
-node_name_1=y
-node_name_2=z
+node_name_1 slots=y
+node_name_2 slots=z
+```
+obs: 
+It will open a file to edit, "x" is the total number of CPU units of main desktop "y" and "z" are the CPU units of each node available in the network
+OBS: Be careful, if a processor have 2 cores and 4 threads, it's recommended to use only the two physical cores, i.e., 2. Do not input 4 taking account the threads, it can make the cluster slower. **`USE ONLY THE COUNT OF PHYSICAL CORES `**
+If you don't wanna use the localhost to process, remove for the .mpi_hostfile
+
+
+
+# Teste do mpi
+create a file, to computer places of pi. Use nano pi.c++
+
+```
+#include <iostream>
+#include <iomanip>
+#include <chrono>
+using namespace std;
+using namespace std::chrono;
+
+double calculatePi(int iterations) {
+    double pi = 0.0;
+    int sign = 1;
+    for (int i = 0; i < iterations; i++) {
+        pi += sign * 4.0 / (2 * i + 1);
+        sign *= -1;
+    }
+    return pi;
+}
+
+int main() {
+    int iterations = 100000000; // número de iterações para calcular pi
+    cout << "Calculando as primeiras 100 casas decimais de pi..." << endl;
+    high_resolution_clock::time_point t1 = high_resolution_clock::now();
+    double pi = calculatePi(iterations);
+    high_resolution_clock::time_point t2 = high_resolution_clock::now();
+    auto duration = duration_cast<milliseconds>(t2 - t1).count();
+    cout << "Pi = " << fixed << setprecision(100) << pi << endl;
+    cout << "Tempo total para calcular: " << duration << " milissegundos" << endl;
+    return 0;
+}
+
+```
+
+to compile the program
+
+```
+mpic++ pi.c++ -o pi
+```
+
+for run local use:
+```
+./pi
+```
+
+to run the program in paralle use
+
+```
+mpirun -np numofnucleos --hostfile ./.mpi_hostfile apprun
+```
+
 
