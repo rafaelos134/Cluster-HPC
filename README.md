@@ -106,7 +106,7 @@ ifconfig
 test other machines using ping
 
 ```
-ping 192.168.1.xxxssh-keygen
+ping 192.168.1.xxx
 ```
 
 If properly configured, it will ping the selected machine in the network. Now we need to configure: (**`DO THIS IN EVERY MACHINE`**)
@@ -118,9 +118,9 @@ sudo nano /etc/hosts
 In the opened file, we can edit the machine names, for example (you can use a generic name):
 
 ```
-# 192.168.1.XXX main_desktop
-# 192.168.1.xxx node_name_1
-# 192.168.1.yyy node_name_2
+192.168.1.XXX main_desktop
+192.168.1.xxx node_name_1
+192.168.1.yyy node_name_2
 ```
 
 Test if it works, if it works, should ping, example:
