@@ -337,4 +337,9 @@ to run the program in paralle use
 mpirun -np numofnucleos --hostfile ./.mpi_hostfile apprun
 ```
 
+```
+scp /path/to/file username@a:/path/to/destination
+```
+
+
 
