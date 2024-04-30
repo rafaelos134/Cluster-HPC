@@ -1,4 +1,4 @@
-This is a *FILE TO HELP* CONFIGURE CLUSTER NODES AND MASTER
+This is a *FILE TO HELP* CONFIGURE CLUSTER NODES AND MASTER -- teste
 ___________________________________________________________________________
 link references:
 # Crie seu próprio Cluster de Alto Desempenho! (Raspberrie)
@@ -65,7 +65,6 @@ sudo nano /etc/network/interfaces
 ```
 
 Set static ip inside the editable file **example**:
-teste
 ```
 auto enp2s0
  iface enp2s0 inet static ->> set static IP
