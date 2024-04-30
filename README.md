@@ -65,7 +65,7 @@ sudo nano /etc/network/interfaces
 ```
 
 Set static ip inside the editable file **example**:
-
+teste
 ```
 auto enp2s0
  iface enp2s0 inet static ->> set static IP
