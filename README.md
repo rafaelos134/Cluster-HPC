@@ -1,4 +1,4 @@
-This is a *FILE TO HELP* CONFIGURE CLUSTER NODES AND MASTER -- teste
+This is a *FILE TO HELP* CONFIGURE CLUSTER NODES AND MASTER
 ___________________________________________________________________________
 link references:
 # Crie seu próprio Cluster de Alto Desempenho! (Raspberrie)
